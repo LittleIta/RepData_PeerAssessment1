@@ -20,7 +20,7 @@ activity <- read.csv("activity.csv")
 ```
 This will load the dataset in the data.frame _activity_
 
-## What is mean total number of steps taken per day?
+## What is the mean total number of steps taken per day?
 Given the dataset, we can calculate the number of steps per day and plot it with an histogram. A green line will be plotted to show the mean. The following code will do just that:
 
 ```r
@@ -40,9 +40,7 @@ The mean and the median of the total number of steps (rounded to 2 decimal place
 
 
 ## What is the average daily activity pattern?
-#1.Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
-#2.Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
-To calculate the average daily pattern, we'll generate a time series plot of the 5-minute interval (along the x-axis) and the average number of steps taken. The code to accomplisch this is:
+To calculate the average daily pattern, we'll generate a time series plot of the 5-minute interval (along the x-axis) and the average number of steps taken. The code to accomplish this is:
 
 ```r
 steps_by_interval <- aggregate(steps~interval, activity, mean, na.rm=TRUE)
@@ -53,7 +51,7 @@ g+geom_line()+
 
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)
   
-The vertical intercept shows the 5-minute interval which contains the maximum number of steps: 835, which contains 206.17 steps (rounded to 2 decimals).  
+The vertical intercept shows the 5-minute interval which contains the maximum number of steps: 835, which contains an average of 206.17 steps (rounded to 2 decimals).  
 
 ## Imputing missing values
 The dataset contains 2304 _missing values_. Since these can bias the results, we'll fill in all the missing values with the mean for that 5-minute interval. The procedure looks as follow:  
@@ -122,4 +120,5 @@ steps_by_interval_day<-aggregate(steps~interval+day, activity_complete, mean)
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)
+  
 By looking at the plots, it appears that the average steps peaks earlier in the morning during weekdays.
